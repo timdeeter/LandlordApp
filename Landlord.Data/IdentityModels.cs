@@ -57,6 +57,8 @@ namespace Landlord.Data
 
         }
 
+        //TODO: You should probably fix this.
+
         //public System.Data.Entity.DbSet<PropertyCreate> PropertyCreate { get; set; }
 
         //public System.Data.Entity.DbSet<Landlord.Models.TenantList> TenantLists { get; set; }

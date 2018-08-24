@@ -9,6 +9,8 @@ namespace Landlord.Models
 {
     public class PropertyCreate
     {
+
+        //You should put more models in here, maybe some Swedish or Brazillian models?
         [Key]
         [Required]
         public string Address { get; set; }

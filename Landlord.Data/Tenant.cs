@@ -9,6 +9,8 @@ namespace Landlord.Data
 {
     public class Tenant
     {
+       //TODO: Teach me how to make my code look this good, man. Nice job.
+
         [Key]
         [Display(Name = "Tenant ID")]
         public int TenantId { get; set; }
