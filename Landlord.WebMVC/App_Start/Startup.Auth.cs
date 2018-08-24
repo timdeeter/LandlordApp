@@ -6,6 +6,7 @@ using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.Google;
 using Owin;
 using Landlord.WebMVC.Models;
+using Landlord.Data;
 
 namespace Landlord.WebMVC
 {
