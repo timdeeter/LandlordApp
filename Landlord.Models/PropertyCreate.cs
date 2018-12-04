@@ -22,7 +22,7 @@ namespace Landlord.Models
         [Display(Name = "Apartment #")]
         public int ApartmentNumber { get; set; }
 
-        public TenantList Tenant { get; set; }
+        public int? TenantId { get; set; }
 
         [Display(Name = "Monthy Rent")]
         [Required]

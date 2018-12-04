@@ -4,41 +4,47 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
+<style>
+    .text, .text:link, .text:visited, .text:active {
+        color: white;
+    }
+</style>
+
+<h2 class="text">Details</h2>
 
 <div>
     <h4>Tenant</h4>
     <hr />
     <dl class="dl-horizontal">
-        <dt>
+        <dt class="text">
             @Html.DisplayNameFor(model => model.OwnerId)
         </dt>
 
-        <dd>
+        <dd class="text">
             @Html.DisplayFor(model => model.OwnerId)
         </dd>
 
-        <dt>
+        <dt class="text">
             @Html.DisplayNameFor(model => model.FirstName)
         </dt>
 
-        <dd>
+        <dd class="text">
             @Html.DisplayFor(model => model.FirstName)
         </dd>
 
-        <dt>
+        <dt class="text">
             @Html.DisplayNameFor(model => model.LastName)
         </dt>
 
-        <dd>
+        <dd class="text">
             @Html.DisplayFor(model => model.LastName)
         </dd>
 
-        <dt>
+        <dt class="text">
             @Html.DisplayNameFor(model => model.DateMovedIn)
         </dt>
 
-        <dd>
+        <dd class="text">
             @Html.DisplayFor(model => model.DateMovedIn)
         </dd>
 

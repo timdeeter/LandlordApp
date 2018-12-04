@@ -5,6 +5,7 @@ using Microsoft.AspNet.Identity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 
@@ -22,12 +23,33 @@ namespace Landlord.WebMVC.Controllers
             return View(model);
         }
 
+        [HttpPost]
+        public JsonResult UpdateLocation(string data)
+        {
+            var Data = data;
+            return Json("Success");
+        }
+
         [Authorize]
         public ActionResult Create()
         {
             TenantService svc = new TenantService(Guid.Parse(User.Identity.GetUserId()));
-            ViewBag.Tenant = new SelectList(svc.GetTenants().AsEnumerable(), "TenantId", "TenantId");
+            ViewBag.TenantId = new SelectList(svc.GetTenants(), "TenantId", "DisplayName"); //GetTenants, idk, Display Name in Dropdown
             return View();
+        }
+
+        [Authorize]
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Create(PropertyCreate model)
+        {
+            PropertyService svc = CreatePropertyService();
+            if (svc.CreateProperty(model)){
+                return RedirectToAction("Index");
+            }
+            
+
+            return View(model);
         }
 
         public ActionResult Delete(int id)
@@ -44,16 +66,7 @@ namespace Landlord.WebMVC.Controllers
             return View(toView);
         }
 
-        [Authorize]
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create(PropertyCreate model)
-        {
-            PropertyService svc = CreatePropertyService();
-            svc.CreateProperty(model);
-
-            return RedirectToAction("Index");
-        }
+        
 
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
@@ -64,8 +77,11 @@ namespace Landlord.WebMVC.Controllers
             return RedirectToAction("Index");
         }
 
+        [Authorize]
         public ActionResult Edit(int id)
         {
+            TenantService tenantsvc = new TenantService(Guid.Parse(User.Identity.GetUserId()));
+            ViewBag.TenantId = new SelectList(tenantsvc.GetTenants(), "TenantId", "DisplayName");
             PropertyService svc = CreatePropertyService();
             Property toEdit = svc.GetPropertyById(id);
 

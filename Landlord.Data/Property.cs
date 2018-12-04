@@ -4,6 +4,9 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
+using System.Net;
+using Newtonsoft.Json;
 
 namespace Landlord.Data
 {
@@ -28,11 +31,16 @@ namespace Landlord.Data
         [Display(Name = "Apartment #")]
         public int ApartmentNumber { get; set; }
 
+        public int? TenantId { get; set; }
         public Tenant Tenant { get; set; }
 
         [Required]
         [Display(Name = "Monthly Rent")]
         public decimal Rent { get; set; }
+        
+        public string Longitude { get; set; }
+
+        public string Latitude { get; set; }
 
         public DateTimeOffset DateClaimed { get; set; }
     }

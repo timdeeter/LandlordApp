@@ -42,6 +42,9 @@
     <Reference Include="Microsoft.AspNet.Identity.EntityFramework, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.2.2.2\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.11.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
@@ -53,6 +56,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="UserSettings.cs" />
     <Compile Include="IdentityModels.cs" />
     <Compile Include="Migrations\201808161926145_test.cs" />
     <Compile Include="Migrations\201808161926145_test.Designer.cs">
@@ -98,6 +102,18 @@
     <Compile Include="Migrations\201808241348079_RemoveUnnecessaryDatabases.Designer.cs">
       <DependentUpon>201808241348079_RemoveUnnecessaryDatabases.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201808271746287_propertyTenantId.cs" />
+    <Compile Include="Migrations\201808271746287_propertyTenantId.Designer.cs">
+      <DependentUpon>201808271746287_propertyTenantId.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201808301416096_jsonConvert.cs" />
+    <Compile Include="Migrations\201808301416096_jsonConvert.Designer.cs">
+      <DependentUpon>201808301416096_jsonConvert.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201808301506465_add-migrain AbstractGet.cs" />
+    <Compile Include="Migrations\201808301506465_add-migrain AbstractGet.Designer.cs">
+      <DependentUpon>201808301506465_add-migrain AbstractGet.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Property.cs" />
@@ -140,6 +156,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201808241348079_RemoveUnnecessaryDatabases.resx">
       <DependentUpon>201808241348079_RemoveUnnecessaryDatabases.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201808271746287_propertyTenantId.resx">
+      <DependentUpon>201808271746287_propertyTenantId.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201808301416096_jsonConvert.resx">
+      <DependentUpon>201808301416096_jsonConvert.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201808301506465_add-migrain AbstractGet.resx">
+      <DependentUpon>201808301506465_add-migrain AbstractGet.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

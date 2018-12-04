@@ -19,6 +19,13 @@ namespace Landlord.Models
         [Display(Name = "Last Name")]
         public string LastName { get; set; }
 
+        public string DisplayName
+        {
+            get { return $"{this.FirstName} {this.LastName}"; }
+            set {  }
+        }
+
+
         public override string ToString()
         {
             return base.ToString();

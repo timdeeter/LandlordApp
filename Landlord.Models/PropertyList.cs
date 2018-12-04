@@ -20,6 +20,12 @@ namespace Landlord.Models
 
         public DateTimeOffset DateClaimed { get; set; }
 
+        public string TenantName;
+
+        public string Longitude { get; set; }
+
+        public string Latitude { get; set; }
+
         public override string ToString()
         {
             return base.ToString();

@@ -4,65 +4,79 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
+<style>
+    .text, .text:link, .text:visited, .text:active {
+        color: white;
+    }
+</style>
+
+<h2 class="text">Details</h2>
 
 <div>
     <h4>Property</h4>
     <hr />
     <dl class="dl-horizontal">
-        <dt>
+        <dt class="text">
             @Html.DisplayNameFor(model => model.OwnerId)
         </dt>
 
-        <dd>
+        <dd class="text">
             @Html.DisplayFor(model => model.OwnerId)
         </dd>
 
-        <dt>
+        <dt class="text">
             @Html.DisplayNameFor(model => model.Address)
         </dt>
 
-        <dd>
+        <dd class="text">
             @Html.DisplayFor(model => model.Address)
         </dd>
 
-        <dt>
+        <dt class="text">
             @Html.DisplayNameFor(model => model.City)
         </dt>
 
-        <dd>
+        <dd class="text">
             @Html.DisplayFor(model => model.City)
         </dd>
 
-        <dt>
+        <dt class="text">
             @Html.DisplayNameFor(model => model.State)
         </dt>
 
-        <dd>
+        <dd class="text">
             @Html.DisplayFor(model => model.State)
         </dd>
 
-        <dt>
+        <dt class="text">
+            @Html.DisplayNameFor(model => model.TenantId)
+        </dt>
+
+        <dd class="text">
+            @Html.DisplayFor(model => model.TenantId)
+        </dd>
+
+        <dt class="text">
             @Html.DisplayNameFor(model => model.ApartmentNumber)
         </dt>
 
-        <dd>
+        <dd class="text">
             @Html.DisplayFor(model => model.ApartmentNumber)
         </dd>
 
-        <dt>
+        <dt class="text">
             @Html.DisplayNameFor(model => model.Rent)
         </dt>
 
-        <dd>
+        <dd class="text">
             @Html.DisplayFor(model => model.Rent)
         </dd>
 
-        <dt>
+        <dt class="text">
             @Html.DisplayNameFor(model => model.DateClaimed)
         </dt>
 
-        <dd>
+        <dd class="text">
             @Html.DisplayFor(model => model.DateClaimed)
         </dd>
 

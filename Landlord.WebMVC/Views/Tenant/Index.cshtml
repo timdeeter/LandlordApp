@@ -4,17 +4,26 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<style>
+    .text, .text:link, .text:visited, .text:active {
+        color: white;
+    }
+</style>
+
+<h2 class="text">Index</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
 <table class="table">
     <tr>
-        <th>
+        <th class="text">
+            @Html.DisplayNameFor(model => model.TenantId)
+        </th>
+        <th class="text">
             @Html.DisplayNameFor(model => model.FirstName)
         </th>
-        <th>
+        <th class="text">
             @Html.DisplayNameFor(model => model.LastName)
         </th>
         <th></th>
@@ -22,16 +31,19 @@
 
 @foreach (var item in Model) {
     <tr>
-        <td>
+        <td class="text">
+            @Html.DisplayFor(modelItem => item.TenantId)
+        </td>
+        <td class="text">
             @Html.DisplayFor(modelItem => item.FirstName)
         </td>
-        <td>
+        <td class="text">
             @Html.DisplayFor(modelItem => item.LastName)
         </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.TenantId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.TenantId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.TenantId })
+        <td class="text">
+            @Html.ActionLink("Edit", "Edit", new { id = item.TenantId }) |
+            @Html.ActionLink("Details", "Details", new { id = item.TenantId }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.TenantId })
         </td>
     </tr>
 }

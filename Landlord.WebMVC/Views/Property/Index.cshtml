@@ -17,61 +17,88 @@
     .text, .text:link, .text:visited, .text:active {
         color: white;
     }
+
+    p{color:white;}
 </style>
 
 <h2 style="color:white;">My Properties</h2>
+<p><button onclick="geoFindMe()">Update Location</button></p>
+<div id="locationOutput"></div>
+
+<script>
+    var Longitude;
+    var Latitude;
+    function geoFindMe() {
+        var output = document.getElementById("locationOutput");
+
+        if (!navigator.geolocation) {
+            output.innerHTML = "<p>Geolocation is not supported by your browser</p>";
+            return;
+        }
+
+        function success(position) {
+            var Latitude = position.coords.latitude;
+            var Longitude = position.coords.longitude;
+            output.innerHTML = "<p>Location grabbed! Reloading page.</p>"
+            var dataToPost = JSON.stringify({ 'lat': Latitude, 'lng': Longitude })
+
+            //$.ajax({
+            //    type: "POST",
+            //    url: "Property/UpdateLocation",
+            //    data: dataToPost,
+            //    success: function(){},
+            //    contentType: 'application/json'
+            //});
+
+            output.innerHTML = "<p>Location services currently disabled for maintenance.</p>"
+
+            //location.reload();
+        }
+
+        function error() {
+            output.innerHTML = "Unable to retrieve your location";
+        }
+
+        output.innerHTML = "<p>Locating…</p>";
+
+        navigator.geolocation.getCurrentPosition(success, error);
+    }
+</script>
 
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
-@*
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Address)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DateClaimed)
-        </th>
-        <th></th>
-    </tr>
-*@
+
+
 
 @foreach (var item in Model)
 {
-
     <div class="col-lg-4" style="padding: 10px">
         <div class="mapwrap">
             <h1 style="color: white;">Property @Html.DisplayFor(modelItem => item.PropertyId)</h1>
             <p style="color: white; font-size:17px">@Html.DisplayFor(modelItem => item.Address), @Html.DisplayFor(modelItem => item.City), @Html.DisplayFor(modelItem => item.State)</p>
             @{
                 string completed = item.Address.Replace(' ', '+');
-                string fullAddress = "https://maps.googleapis.com/maps/api/staticmap?center=" + completed + "&zoom=19&size=300x300&maptype=satellite&key=AIzaSyAZZA66wU6vz39Jc2WY5uiD4eWygYNg2RM";
-            }
+                string fullAddress = "https://maps.googleapis.com/maps/api/staticmap?center=" + completed + "&zoom=19&size=300x300&maptype=satellite&markers=color:red%7Clabel:Property%7C"+item.Latitude +"," + item.Longitude + "&key=AIzaSyAZZA66wU6vz39Jc2WY5uiD4eWygYNg2RM";
+             }
             <img src=@fullAddress>
             <br/>
             <br/>
+            @{ 
+                if(item.TenantName == " ")
+                {
+                    item.TenantName = "Vacant";
+                }
+            }
+
+            <p style="color: white; font-size:17px">
+                Current Tenant: @item.TenantName
+            </p>
+
+            <br/>
             @Html.ActionLink("Edit", "Edit", new { id = item.PropertyId }, new { @class = "text" }) |
             @Html.ActionLink("Details", "Details", new { id = item.PropertyId }, new { @class = "text" }) |
-            @Html.ActionLink("Delete", "Delete", new { id = item.PropertyId }, new {@class = "text"})
+            @Html.ActionLink("Delete", "Delete", new { id = item.PropertyId }, new { @class = "text" })
         </div>
     </div>
 }
-
-
-   @* <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Address)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DateClaimed)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id=item.PropertyId }) |
-                @Html.ActionLink("Details", "Details", new { id=item.PropertyId }) |
-                @Html.ActionLink("Delete", "Delete", new { id=item.PropertyId })
-            </td>
-        </tr> 
-}
-
-</table>*@

@@ -35,30 +35,48 @@ namespace Landlord.Services
             }
         }
 
-        public List<TenantList> GetTenants()
+        //public List<TenantList> GetTenants()
+        //{
+        //    using (var ctx = new ApplicationDbContext())
+        //    {
+        //        var query =
+        //            ctx
+        //                .Tenants
+        //                .Where(e => e.OwnerId == _ownerId)
+        //                .Select(
+        //                    e =>
+        //                        new 
+        //                        {
+        //                            TenantId = e.TenantId,
+        //                            FirstName = e.FirstName,
+        //                            LastName = e.LastName,
+        //                        }
+        //                ).ToList()
+        //                .Select(c => new Landlord.Models.TenantList
+        //                {
+        //                    TenantId = c.TenantId,
+        //                    FirstName = c.FirstName,
+        //                    LastName = c.LastName,
+        //                }).ToList();
+        //        return query;
+        //    }
+        //}
+
+        public IEnumerable<TenantList> GetTenants()
         {
             using (var ctx = new ApplicationDbContext())
             {
-                var query =
-                    ctx
-                        .Tenants
-                        .Where(e => e.OwnerId == _ownerId)
-                        .Select(
-                            e =>
-                                new
-                                {
-                                    TenantId = e.TenantId,
-                                    FirstName = e.FirstName,
-                                    LastName = e.LastName,
-                                }
-                        ).ToList()
-                        .Select(c => new Landlord.Models.TenantList
-                        {
-                            TenantId = c.TenantId,
-                            FirstName = c.FirstName,
-                            LastName = c.LastName,
-                        }).ToList();
-                return query;
+                var entity = ctx
+                            .Tenants
+                            .Where(e => e.OwnerId == _ownerId)
+                            .Select(e =>
+                            new TenantList
+                            {
+                                TenantId = e.TenantId,
+                                FirstName = e.FirstName,
+                                LastName = e.LastName
+                            });
+                return entity.ToArray();
             }
         }
 

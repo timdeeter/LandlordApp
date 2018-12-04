@@ -13,6 +13,11 @@ using Landlord.Data;
 
 namespace Landlord.WebMVC.Controllers
 {
+
+    #if !DEBUG
+        [RequireHttps]​
+    #endif
+
     [Authorize]
     public class AccountController : Controller
     {
